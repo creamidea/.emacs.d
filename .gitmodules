@@ -1,0 +1,22 @@
+
+[submodule "package/yasnippet"]
+	path = package/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "package/jade-mode"]
+	path = package/jade-mode
+	url = git@github.com:brianc/jade-mode.git
+[submodule "package/jsx-mode"]
+	path = package/jsx-mode
+	url = git@github.com:jsx/jsx-mode.el.git
+[submodule "package/sass-mode"]
+	path = package/sass-mode
+	url = git@github.com:sass/sass.git
+[submodule "package/restclient-mode"]
+	path = package/restclient-mode
+	url = git@github.com:pashky/restclient.el.git
+[submodule "themes/emacs-color-themes"]
+	path = themes/emacs-color-themes
+	url = git@github.com:owainlewis/emacs-color-themes.git
+[submodule "themes/emacs-color-theme-solarized"]
+	path = themes/emacs-color-theme-solarized
+	url = git@github.com:sellout/emacs-color-theme-solarized.git

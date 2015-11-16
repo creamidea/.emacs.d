@@ -3,3 +3,17 @@
 
 # Packaging
 .cask
+.DS_Store
+
+# my emacs world custom
+elpa
+eshell
+ac-dict
+ac-comphist.dat
+auto-save-list
+ede-projects.el
+.org-id-locations
+bookmarks
+snippets
+url
+config/*.el~
