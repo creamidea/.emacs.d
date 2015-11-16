@@ -60,6 +60,7 @@
 ;; themes
 ;; https://github.com/owainlewis/emacs-color-themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
+;; (load-theme 'junio t)
 (load-theme 'brin t)
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 ;; (load-theme 'solarized t)
@@ -123,20 +124,32 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; ===================================================
 ;; auto-complete: custome function
 ;; (global-auto-complete-mode 1)
-((lambda (modes)
-   "Bind the modes that gave to the auto-complete-mode"
-   (interactive)
-   (dolist (mode modes)
-     (add-hook mode
-	       (lambda () (auto-complete-mode 1))))
-   )(list 'jsx-mode-hook 'js-mode-hook 'lisp-interaction-mode 'cc-mode 'c-mode 'emacs-lisp-mode))
+(add-to-list 'load-path "~/.emacs.d/package/popup-el")
+(add-to-list 'load-path "~/.emacs.d/package/auto-complete")
+(require 'popup)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+;; ((lambda (modes)
+;;    "Bind the modes that gave to the auto-complete-mode"
+;;    (interactive)
+;;    (dolist (mode modes)
+;;      (add-hook mode
+;; 	       (lambda () (auto-complete-mode 1))))
+;;    )(list 'jsx-mode-hook 'js-mode-hook 'lisp-interaction-mode 'cc-mode 'c-mode 'emacs-lisp-mode))
 ;; (Add-hook 'js-mode-hook
 ;;          (lambda () (auto-complete-mode 1)))
+
+;; ============================================================================
+;; undo-tree
+(add-to-list 'load-path "~/.emacs.d/package/undo-tree-0.6.5")
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 (load-file "~/.emacs.d/config/org-mode.el")
 (load-file "~/.emacs.d/config/others-mode.el")
 
-;; ================================================================================
+;; ============================================================================
 ;; (server-start)
 (load "server")
 (unless (server-running-p) (server-start))

@@ -23,3 +23,9 @@
 [submodule "package/org-mode"]
 	path = package/org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "package/auto-complete"]
+	path = package/auto-complete
+	url = git@github.com:auto-complete/auto-complete.git
+[submodule "package/popup-el"]
+	path = package/popup-el
+	url = git@github.com:auto-complete/popup-el.git
