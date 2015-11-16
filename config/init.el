@@ -56,6 +56,14 @@
 ;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 ;; (package-initialize) ;; You might already have this line
 
+;; ================================================================================
+;; themes
+;; https://github.com/owainlewis/emacs-color-themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
+(load-theme 'brin t)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+;; (load-theme 'solarized t)
+
 ;; ==================================================
 ;; dont create make backup file
 (setq make-backup-file nil)
@@ -132,11 +140,3 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (server-start)
 (load "server")
 (unless (server-running-p) (server-start))
-
-;; ================================================================================
-;; themes
-;; https://github.com/owainlewis/emacs-color-themes
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes")
-;; (load-theme 'brin t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-(load-theme 'solarized t)

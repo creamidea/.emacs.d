@@ -1,7 +1,7 @@
 ;; ===================================================
 ;; for org mode
-;; (add-to-list 'load-path "~/.emacs.d/package/org-mode")
-;; (add-to-list 'load-path "~/.emacs.d/package/org-mode/contrib/lisp" t)
+(add-to-list 'load-path "~/.emacs.d/package/org-mode")
+(add-to-list 'load-path "~/.emacs.d/package/org-mode/contrib/lisp" t)
 
 (defun load-deck ()
   "Load Deck Configures"

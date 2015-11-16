@@ -20,3 +20,6 @@
 [submodule "package/scss-mode"]
 	path = package/scss-mode
 	url = git@github.com:antonj/scss-mode.git
+[submodule "package/org-mode"]
+	path = package/org-mode
+	url = git://orgmode.org/org-mode.git
