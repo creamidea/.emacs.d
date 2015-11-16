@@ -23,6 +23,7 @@
              (require 'ox-publish)
              (setq org-src-fontify-natively t)
              (setq creamidea-path "/Users/creamidea/Documents/creamidea2")
+	     (setq creamidea-public-path "/Users/creamidea/codes/repos/oe-nk/public") ;; Here will change by your oe-nk's public
              (setq org-publish-project-alist
                    `(
                      ;; 把各部分的配置文件写到这里面来
@@ -30,7 +31,7 @@
                       :base-directory ,(concat creamidea-path "/_articles/")
                       :base-extension "org"
                       
-                      :publishing-directory ,(concat creamidea-path "/public/")
+                      :publishing-directory ,creamidea-public-path
                       :recursive f
                       :publishing-function org-html-publish-to-html
                       :headline-levels 4             ; Just the default for this project.
@@ -53,7 +54,7 @@
                      ("creamidea-static"
                       :base-directory ,(concat creamidea-path "/static")
                       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-                      :publishing-directory ,(concat creamidea-path "/public")
+                      :publishing-directory  ,creamidea-public-path
                       :recursive f
                       :publishing-function org-publish-attachment
                       )
