@@ -29,3 +29,6 @@
 [submodule "package/popup-el"]
 	path = package/popup-el
 	url = git@github.com:auto-complete/popup-el.git
+[submodule "package/powerline"]
+	path = package/powerline
+	url = git@github.com:milkypostman/powerline.git

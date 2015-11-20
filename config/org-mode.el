@@ -22,7 +22,7 @@
              "Run"
              (require 'ox-publish)
              (setq org-src-fontify-natively t)
-             (setq creamidea-path "/Users/creamidea/Documents/creamidea2")
+             (setq creamidea-path "/Users/creamidea/Documents/creamidea")
 	     (setq creamidea-public-path "/Users/creamidea/codes/repos/oe-nk/public") ;; Here will change by your oe-nk's public
              (setq org-publish-project-alist
                    `(
@@ -67,5 +67,5 @@
   ())
 (eval-after-load "org"
   (lambda ()
-    ;; (load-deck)
+    (load-deck)
     (load-creamidea-publish)))

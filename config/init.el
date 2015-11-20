@@ -3,13 +3,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("d3a85b814c17775b7dae99ddb20ff153f8a33013271ddd88d37548a32ec97d42" default)))
+ '(user-full-name "Junjia Ni")
+ '(user-mail-address "creamidea@gmail.com")
+ ;; '(custom-safe-themes
+ ;;   (quote
+ ;;    ("d3a85b814c17775b7dae99ddb20ff153f8a33013271ddd88d37548a32ec97d42" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
- '(frame-background-mode (quote dark))
- '(linum-format " %5i ")
+ ;; '(frame-background-mode (quote dark))
+ '(linum-format " %6i ")
  '(menu-bar-mode nil)
  '(org-agenda-files (quote ("~/Documents/work.org")))
  '(scroll-bar-mode nil)
@@ -18,8 +20,6 @@
  '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
- '(user-full-name "Junjia Ni")
- '(user-mail-address "creamidea@gmail.com")
  '(transient-mark-mode (quote (only . t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -34,6 +34,11 @@
 		    (font-spec :family "PingFang SC" :size 15)))
 ;; (font-spec :family "Microsoft Yahei" :size 14)))
 
+;; ============================================================================
+;; (server-start)
+(load "server")
+(unless (server-running-p) (server-start))
+(when window-system (set-frame-size (selected-frame) 124 42))
 (add-hook 'window-configuration-change-hook
           (lambda ()
             (setq frame-title-format
@@ -62,8 +67,11 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
 ;; (load-theme 'junio t)
 (load-theme 'brin t)
+
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 ;; (load-theme 'solarized t)
+;; (set-frame-parameter nil 'background-mode 'light)
+;; (set-terminal-parameter nil 'background-mode 'light)
 
 ;; ==================================================
 ;; dont create make backup file
@@ -92,10 +100,11 @@
 ;; 设置M-空格 来setmark了,这样我就不用按 C-@ 来 setmark 了, C-@ 很不好按
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 
-;; seth the key : TAB
-(setq default-tab-width 2)
-(setq tab-stop-list ())
-(setq-default indent-tabs-mode nil)
+;; seth the tab size : TAB
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 2)
+(setq js-indent-level 2)
+;; (setq tab-stop-list ())
 
 ;; Easy PG
 ;; (require 'epa-file)
@@ -148,8 +157,3 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (load-file "~/.emacs.d/config/org-mode.el")
 (load-file "~/.emacs.d/config/others-mode.el")
-
-;; ============================================================================
-;; (server-start)
-(load "server")
-(unless (server-running-p) (server-start))

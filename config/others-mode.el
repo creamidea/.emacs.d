@@ -31,3 +31,7 @@
 (setq restclient-same-buffer-response-name "*RESTful Response Message*")
 (setq restclient-log-request nil)
 (setq restclient-inhibit-cookies nil)
+
+;; (add-to-list 'load-path "~/.emacs.d/package/powerline")
+;; (require 'powerline)
+;; (powerline-center-theme)
