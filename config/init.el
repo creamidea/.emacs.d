@@ -26,8 +26,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Menlo" :foundry "outline" :slant normal :weight Regular :height 150 :width normal)))))
+ ;; :font Menlo 
+ '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight Regular :height 140 :width normal)))))
 ;; Setting Chinese Font
+;; 设置中文字体
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
 		    charset
@@ -38,7 +40,7 @@
 ;; (server-start)
 (load "server")
 (unless (server-running-p) (server-start))
-(when window-system (set-frame-size (selected-frame) 124 42))
+(when window-system (set-frame-size (selected-frame) 142 42))
 (add-hook 'window-configuration-change-hook
           (lambda ()
             (setq frame-title-format
@@ -138,6 +140,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'popup)
 (require 'auto-complete)
 (require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 ;; ((lambda (modes)
 ;;    "Bind the modes that gave to the auto-complete-mode"

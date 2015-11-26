@@ -5,12 +5,13 @@
 #+TITLE: ${1:No Title}
 #+AUTHOR: Junjia Ni
 #+EMAIL: creamidea(AT)gmail.com
-#+DESCRIPTION: ${2:随手写写}
+#+CATEGORY: article
+#+DESCRIPTION: ${2:$1}
 #+KEYWORDS: ${3:emacs orgmode}
 #+OPTIONS: H:4 num:t toc:t \n:nil @:t ::t |:t ^:t f:t TeX:t email:t timestamp:t
 #+LINK_HOME: https://creamidea.github.io
 
 
-* 前奏
+* 序章
 $0
 * 尾声
