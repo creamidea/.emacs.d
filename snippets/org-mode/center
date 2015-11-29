@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: center
-# key: center
+# key: <c
 # --
 #+BEGIN_CENTER
 $0

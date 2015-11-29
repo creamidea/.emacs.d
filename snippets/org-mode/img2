@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: image 2
+# key: <img2
+# --
+#+BEGIN_HTML
+<img src="$1" alt="$2" title="$2"/>
+#+END_HTML

@@ -74,7 +74,7 @@
 (defvar org-gtd-other-files)
 (setf org-gtd-other-files (list
 			   (concat gtd-path "/projects/third-part-monitor.org")
-			   (concat gtd-path "/someday.org")
+			   (concat gtd-path "/remember.org")
 			   (concat gtd-path "/reading.org")))
 (setf org-agenda-files (cons org-gtd-file org-gtd-other-files))
 
@@ -106,16 +106,22 @@
 		      ("MAIL" . ?m) ;; mail somebody
 		      ("LUNCHTIME" . ?l) ;; breakfast lunchtime dinner onway etc. (rest)
 		      ("TOURISM" . ?t) ;; tourism or not at home/company and any where
-		      ;; ("COMPUTER" . ?c)
+		      ("COMPUTER" . ?c)
 		      ;; ("FIELD" . ?f) 
 		      ("READING" . ?r))) ;; reading 
 
 ;; I like to color-code task types.
 
-;; (setf org-todo-keyword-faces '(("NEXT" . (:foreground "yellow" :background "red" :bold t :weight bold))
-;; 			       ("TODO" . (:foreground "cyan" :background "steelblue" :bold t :weight bold))
-;; 			       ("WAITING" . (:foreground "yellow" :background "magenta2" :bold t :weight bold))
-;; 			       ("DONE" . (:foreground "gray50" :background "gray30"))))
+(setf org-todo-keyword-faces
+      '(("NEXT" . (:foreground "yellow" :background "red" :bold t :weight bold))
+	("TODO" . (:foreground "cyan" :bold t :weight bold))
+	;; ("TODO" . (:foreground "cyan" :background "steelblue" :bold t :weight bold))
+	("STARTED" . (:foreground "springgreen" :bold t :weight bold))
+	("CANCELLED" . (:foreground "#DC143C" :bold t :weight bold))
+	("WAITING" . (:foreground "yellow" :bold t :weight bold))
+	;; ("WAITING" . (:foreground "yellow" :background "magenta2" :bold t :weight bold))
+	("DEFERRED" . (:foreground "deepskyblue" :bold t :weight bold))
+	("DONE" . (:foreground "gray50" :background "gray30"))))
 
 ;; I put the archive in a separate file, because the gtd file will
 ;; probably already get pretty big just with current tasks.
@@ -138,8 +144,19 @@
 
 ;; (add-to-list 'load-path "~/.emacs.d/package/remember-el")
 ;; (require 'remember)
+;; move sub-tree from one file to another
+(setq org-refile-use-outline-path 'file)
+(setq org-refile-targets '((org-agenda-files :level . 1)))
 (setq org-reverse-note-order t)  ;; note at beginning of file by default.
 (setq org-default-notes-file (concat gtd-path "/remember.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat gtd-path "/remember.org") "Tasks")
+	 "* TODO %?\n  %i\n  %a")
+        ("i" "Idea" entry (file+headline (concat gtd-path "/newgtd.org") "Idea")
+	 "** %?\n %T\n  %a")
+        ("j" "Journal" entry (file+datetree (concat gtd-path "/journal.org"))
+	 "* %?\nEntered on %U\n  %i\n  %a")))
+
 ;; (setq remember-annotation-functions '(org-remember-annotation))
 ;; (setq remember-handler-functions '(org-remember-handler))
 ;; (add-hook 'remember-mode-hook 'org-remember-apply-template)
@@ -162,7 +179,7 @@
 (setf org-tags-column -65)
 (setf org-special-ctrl-a/e t)
 
-(setq org-log-done t)
+;; (setq org-log-done t)
 (setq org-log-done 'time)
 (setq org-log-done 'note)
 (setq org-deadline-warning-days 14)
