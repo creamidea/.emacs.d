@@ -3,7 +3,7 @@
 ;; Copyright (C) 2007  David O'Toole
 
 ;; Author: David O'Toole(require 'org) <dto@gnu.org>
-;; Modifier: Junjia Ni (creamidea@gmail.com) 2015
+;; Modifier: Junjia Ni (creamidea@gmail.com, 2015) 
 ;; Keywords: tools
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -77,6 +77,7 @@
 			   (concat gtd-path "/remember.org")
 			   (concat gtd-path "/reading.org")))
 (setf org-agenda-files (cons org-gtd-file org-gtd-other-files))
+;; (setq org-agenda-files (list "/Users/creamidea/Documents/GTD/project"))
 
 ;; When I'm using org to track issues in a project, I use these
 ;; keywords on a file-local basis: 
@@ -150,12 +151,12 @@
 (setq org-reverse-note-order t)  ;; note at beginning of file by default.
 (setq org-default-notes-file (concat gtd-path "/remember.org"))
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat gtd-path "/remember.org") "Tasks")
-	 "* TODO %?\n  %i\n  %a")
+      '(("t" "Todo" entry (file+headline (concat gtd-path "/newgtd.org") "Tasks")
+	 "* TODO %?\n  %i\n  %a\n")
         ("i" "Idea" entry (file+headline (concat gtd-path "/newgtd.org") "Idea")
-	 "** %?\n %T\n  %a")
+	 "** %?\n %T\n  %a\n")
         ("j" "Journal" entry (file+datetree (concat gtd-path "/journal.org"))
-	 "* %?\nEntered on %U\n  %i\n  %a")))
+	 "* %?\nEntered on %U\n  %i\n  %a\n")))
 
 ;; (setq remember-annotation-functions '(org-remember-annotation))
 ;; (setq remember-handler-functions '(org-remember-handler))
@@ -186,6 +187,8 @@
 (setq org-fontify-emphasized-text t)
 (setq org-fontify-done-headline t)
 (setq org-agenda-include-all-todo nil)
+(setq org-agenda-include-diary t)
+(setq org-agenda-use-time-grid t)
 (setq org-directory gtd-path)
 ;; org export setting(config)
 ;; (setq org-export-html-style "<link rel=stylesheet href=\"../e/freeshell2.css\" type=\"text/css\">")
@@ -203,10 +206,3 @@
 
 (provide 'org-gtd)
 ;;; org-gtd.el ends here
-
-;; (setq org-agenda-files (list "/Users/creamidea/Documents/GTD/project"))
-;; (gtd-config)
-;; (defun gtd-config
-;;     (funcall (lambda ()
-;;        "Config for GTD"
-;;        )))

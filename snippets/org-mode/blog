@@ -8,10 +8,11 @@
 #+CATEGORY: article
 #+DESCRIPTION: ${2:$1}
 #+KEYWORDS: ${3:emacs orgmode}
-#+OPTIONS: H:4 num:t toc:t \n:nil @:t ::t |:t ^:t f:t TeX:t email:t timestamp:t
+#+OPTIONS: H:4 num:t toc:t \n:nil @:t ::t |:t ^:f f:t TeX:t email:t timestamp:t
 #+LINK_HOME: https://creamidea.github.io
+#+STARTUP: showall
 
 
-* 序章
+* 前言
 $0
 * 尾声

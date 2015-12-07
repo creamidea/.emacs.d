@@ -40,7 +40,7 @@
 ;; (server-start)
 (load "server")
 (unless (server-running-p) (server-start))
-(when window-system (set-frame-size (selected-frame) 142 42))
+(when window-system (set-frame-size (selected-frame) 80 24))
 (add-hook 'window-configuration-change-hook
           (lambda ()
             (setq frame-title-format
@@ -65,15 +65,23 @@
 
 ;; ================================================================================
 ;; themes
+
+;; emacs-color-themes
 ;; https://github.com/owainlewis/emacs-color-themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
-;; (load-theme 'junio t)
 (load-theme 'brin t)
+;; (load-theme 'junio t)
 
+;; solarized
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 ;; (load-theme 'solarized t)
 ;; (set-frame-parameter nil 'background-mode 'light)
 ;; (set-terminal-parameter nil 'background-mode 'light)
+
+;; tomorrow-theme
+;; (load-file "~/.emacs.d/themes/tomorrow-theme/color-theme-tomorrow.el")
+;; (require 'color-theme-tomorrow)
+;; (load-theme 'tomorrow-night t)
 
 ;; ==================================================
 ;; dont create make backup file

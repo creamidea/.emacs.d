@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: utf-8 encoding
-# key: utf8
+# name: node js scirpt
+# key: script
 # --
 #!/usr/bin/env node
 // -*- coding: utf-8 -*-

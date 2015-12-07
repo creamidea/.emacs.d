@@ -2,4 +2,4 @@
 # name: insert INCLUDE
 # key: <i
 # --
-#+INCLUDE "$0"
+#+INCLUDE: "$0" src $1
