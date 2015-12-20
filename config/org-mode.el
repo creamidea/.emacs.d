@@ -19,14 +19,15 @@
 (defun load-creamidea-publish ()
   "Config for Creamidea Publish"
   (require 'ox-publish)
+  (require 'ox-rss)
   (setq org-src-fontify-natively t)
   (setq creamidea-path "/Users/creamidea/Documents/creamidea")
-  (setq creamidea-public-path "/Users/creamidea/codes/repos/oe-nk/public") ;; Here will change by your oe-nk's public
+  (setq creamidea-public-path "/Users/creamidea/Code/repos/oe-nk/public") ;; Here will change by your oe-nk's public
   
-  (setq meta-linkedin "<meta name=\"linkedin\" content=\"https://cn.linkedin.com/in/junjia-ni-b3a42365\"></meta>")
-  (setq meta-email "<meta name=\"gmail\" content=\"creamidea@gmail.com\"></meta>")
-  (setq link-medium-fonts "<link rel=\"stylesheet\" type=\"text/css\" href=\"/medium-fonts.css\" />")
-  (setq link-style-css "<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\" />")
+  (setq meta-linkedin "<meta name=\"linkedin\" content=\"https://cn.linkedin.com/in/junjia-ni-b3a42365\">")
+  (setq meta-email "<meta name=\"gmail\" content=\"creamidea@gmail.com\">")
+  (setq link-medium-fonts "<link rel=\"stylesheet\" type=\"text/css\" href=\"/medium-fonts.css\">")
+  (setq link-style-css "<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">")
   (setq analytics-js "<!-- Google Analytics --><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create', 'UA-38213594-1', 'auto');ga('send', 'pageview');</script><script async src='//www.google-analytics.com/analytics.js'></script><!-- End Google Analytics -->")
   (setq app-js "<script src=\"/app.js\"></script>")
   
@@ -64,7 +65,20 @@
 	   :recursive f
 	   :publishing-function org-publish-attachment
 	   )
-	  ("creamidea" :components ("creamidea-article" "creamidea-static"))
+	  ("homepage-rss"
+	   :base-directory ,(concat creamidea-path "/content")
+	   :base-extension "org"
+	   :rss-image-url "http://creamidea.github.io/favicon.ico"
+	   :html-link-home "http://creamidea.github.io/"
+	   :html-link-use-abs-url t
+	   :rss-extension "xml"
+	   :publishing-directory ,creamidea-public-path
+	   :publishing-function (org-rss-publish-to-rss)
+	   :section-numbers nil
+	   :exclude ".*"            ;; To exclude all files...
+	   :include ("index.org")   ;; ... except index.org.
+	   :table-of-contents nil)
+	  ("creamidea" :components ("creamidea-article" "creamidea-static" "homepage-rss"))
 	  ;; ("creamidea" :components ("creamidea-article" "creamidea-static"))
 	  ;; http://lujun9972.github.io/emacs/elisp/
 	  ;; http://forrestchang.github.io/2015/08/29/use-emacs-org-mode-build-blog/
