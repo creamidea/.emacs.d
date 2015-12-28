@@ -32,3 +32,6 @@
 [submodule "package/powerline"]
 	path = package/powerline
 	url = git@github.com:milkypostman/powerline.git
+[submodule "package/dash-at-point"]
+	path = package/dash-at-point
+	url = git@github.com:stanaka/dash-at-point.git

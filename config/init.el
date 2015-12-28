@@ -20,14 +20,18 @@
  '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
+ '(cursor-type 'bar)
+ '(blink-cursor-mode nil)
+ '(blink-cursor-blinks 0)
+ '(line-spacing 0.24)
  '(transient-mark-mode (quote (only . t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; :font Menlo 
- '(default ((t (:family "Monaco" :foundry "outline" :slant normal :weight Regular :height 140 :width normal)))))
+ ;; :font Menlo Monaco
+ '(default ((t (:family "Menlo" :foundry "outline" :slant normal :weight Regular :height 144 :size 14 :width normal)))))
 ;; Setting Chinese Font
 ;; 设置中文字体
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -68,20 +72,27 @@
 
 ;; emacs-color-themes
 ;; https://github.com/owainlewis/emacs-color-themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
-(load-theme 'brin t)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
+;; (load-theme 'brin t)
 ;; (load-theme 'junio t)
 
 ;; solarized
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 ;; (load-theme 'solarized t)
-;; (set-frame-parameter nil 'background-mode 'light)
-;; (set-terminal-parameter nil 'background-mode 'light)
+;; (custom-set-variables
+;;  '(solarized-termcolors 256)
+;;  '(solarized-contrast 'high)
+;;  '(solarized-visibility 'high)
+;;  '(solarized-degrade t))
+;; (set-frame-parameter nil 'background-mode 'dark)
+;; (set-terminal-parameter nil 'background-mode 'dark)
+;; (enable-theme 'solarized)
 
 ;; tomorrow-theme
-;; (load-file "~/.emacs.d/themes/tomorrow-theme/color-theme-tomorrow.el")
-;; (require 'color-theme-tomorrow)
-;; (load-theme 'tomorrow-night t)
+(load-file "~/.emacs.d/themes/tomorrow-theme/color-theme-tomorrow.el")
+(require 'color-theme-tomorrow)
+(load-theme 'tomorrow-night t)
+;; (load-theme 'tomorrow-night tomorrow-night-eighties t)
 
 ;; ==================================================
 ;; dont create make backup file
@@ -91,7 +102,7 @@
 ;; close the start page(welcome page)
 (setq inhibit-startup-message t)
 ;; set the default directory
-(setq default-directory "~/codes/")
+(setq default-directory "~/Code/")
 ;; 括号自动补全
 (electric-pair-mode t)
 (show-paren-mode 1)

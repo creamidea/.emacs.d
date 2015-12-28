@@ -17,25 +17,46 @@
    ;; '(org-deck-include-extensions '(goto menu navigation scale status))
    '(org-html-link-home "http://creamidea.github.io")))
 (defun load-creamidea-publish ()
+  
   "Config for Creamidea Publish"
   (require 'ox-publish)
   (require 'ox-rss)
   (setq org-src-fontify-natively t)
   (setq creamidea-path "/Users/creamidea/Documents/creamidea")
-  (setq creamidea-public-path "/Users/creamidea/Code/repos/oe-nk/public") ;; Here will change by your oe-nk's public
+  (setq creamidea-public-path "/Users/creamidea/Documents/creamidea")
+  ;; (setq creamidea-public-path "/Users/creamidea/Code/repos/oe-nk/public") ;; Here will change by your oe-nk's public
   
-  (setq meta-linkedin "<meta name=\"linkedin\" content=\"https://cn.linkedin.com/in/junjia-ni-b3a42365\">")
-  (setq meta-email "<meta name=\"gmail\" content=\"creamidea@gmail.com\">")
-  (setq link-medium-fonts "<link rel=\"stylesheet\" type=\"text/css\" href=\"/medium-fonts.css\">")
-  (setq link-style-css "<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\">")
+  ;; (setq meta-linkedin "<meta name=\"linkedin\" content=\"https://cn.linkedin.com/in/junjia-ni-b3a42365\">")
+  ;; %t stands for the title.
+  ;; %a stands for the author's name.
+  ;; %e stands for the author's email.
+  ;; %d stands for the date.
+  ;; %c will be replaced by `org-html-creator-string'.
+  ;; %v will be replaced by `org-html-validation-link'.
+  ;; %T will be replaced by the export time.
+  ;; %C will be replaced by the last modification time.
+  ;; C-h v org-html-postamble-format 
+  (setq author-info "<div id=\"meta-article\"><p class=\"author\">%a</p>\n<p class=\"email\">%e</p>\n<p class=\"date\">%d</p>\n<p class=\"export-date\">%T</p>\n<p class=\"creator\">%c</p>\n<p class=\"validation\">%v</p>\n<p class=\"last-modification-time\">%C</p></div>") 
+  (setq link-medium-fonts "<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/medium-fonts.css\">")
+  (setq link-style-css "<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/style.css\">")
   (setq analytics-js "<!-- Google Analytics --><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create', 'UA-38213594-1', 'auto');ga('send', 'pageview');</script><script async src='//www.google-analytics.com/analytics.js'></script><!-- End Google Analytics -->")
-  (setq app-js "<script src=\"/app.js\"></script>")
+  (setq app-js "<script src=\"/static/app.js\"></script>")
+
+  (setq org-link-abbrev-alist
+	'(("static-img"  . "../static/img/reference/%s")
+	  ("glfs" . "https://media.githubusercontent.com/media/creamidea/creamidea.github.com/master/static/lfs/%s")
+	  ("gdraw". "https://docs.google.com/drawings/d/")
+	  ("url-to-ja" . "http://translate.google.fr/translate?sl=en&tl=ja&u=%h")
+	  ("google"    . "http://www.google.com/search?q=")
+	  ("gmap"      . "http://maps.google.com/maps?q=%s")
+	  ("omap"      . "http://nominatim.openstreetmap.org/search?q=%s&polygon=1")
+	  ("ads"       . "http://adsabs.harvard.edu/cgi-bin/nph-abs_connect?author=%s&db_key=AST")))
   
   (setq org-publish-project-alist
 	`(
 	  ;; 把各部分的配置文件写到这里面来
 	  ("creamidea-article"
-	   :base-directory ,(concat creamidea-path "/content")
+	   :base-directory ,(concat creamidea-path "/_content")
 	   ;; :base-directory ,(concat creamidea-path "/_articles/")
 	   :base-extension "org"
 	   
@@ -43,13 +64,14 @@
 	   :recursive f
 	   :publishing-function org-html-publish-to-html
 	   :headline-levels 4             ; Just the default for this project.
-	   :html-head ,(concat meta-linkedin meta-email link-style-css link-medium-fonts)
-	   :html-postamble ,(concat app-js analytics-js)
+	   :html-head ,(concat link-style-css link-medium-fonts)
+	   ;; :auto-preamble t
+	   ;; :html-preamble ,(concat app-js analytics-js)
+	   :html-postamble ,(concat author-info app-js analytics-js )
 	   :html-extension "html"
-	   :auto-preamble t
 	   :section-numbers t
 	   ;; :body-only: t
-	   :author "Junjia Ni(NekoTrek)"
+	   :author "冰糖火箭筒(Junjia Ni)"
 	   :email "creamidea@gmail.com"
 	   :auto-sitemap t                ; Generate sitemap.org automagically...
 	   :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
@@ -60,25 +82,25 @@
 	   )
 	  ("creamidea-static"
 	   :base-directory ,(concat creamidea-path "/static")
-	   :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+	   :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|html"
 	   :publishing-directory  ,creamidea-public-path
 	   :recursive f
 	   :publishing-function org-publish-attachment
 	   )
 	  ("homepage-rss"
-	   :base-directory ,(concat creamidea-path "/content")
+	   :base-directory ,(concat creamidea-path "/_content")
 	   :base-extension "org"
-	   :rss-image-url "http://creamidea.github.io/favicon.ico"
-	   :html-link-home "http://creamidea.github.io/"
-	   :html-link-use-abs-url t
-	   :rss-extension "xml"
 	   :publishing-directory ,creamidea-public-path
 	   :publishing-function (org-rss-publish-to-rss)
-	   :section-numbers nil
-	   :exclude ".*"            ;; To exclude all files...
-	   :include ("index.org")   ;; ... except index.org.
-	   :table-of-contents nil)
-	  ("creamidea" :components ("creamidea-article" "creamidea-static" "homepage-rss"))
+	   :html-link-home "http://creamidea.github.io/"
+	   :html-link-use-abs-url t)
+	  ;; :rss-image-url "http://creamidea.github.io/favicon.ico"
+	  ;; :rss-extension "xml"
+	  ;; :section-numbers nil
+	  ;; :exclude ".*"            ;; To exclude all files...
+	  ;; :include ("index.org")   ;; ... except index.org.
+	  ;; :table-of-contents nil)
+	  ("creamidea" :components ("creamidea-article" "homepage-rss"))
 	  ;; ("creamidea" :components ("creamidea-article" "creamidea-static"))
 	  ;; http://lujun9972.github.io/emacs/elisp/
 	  ;; http://forrestchang.github.io/2015/08/29/use-emacs-org-mode-build-blog/

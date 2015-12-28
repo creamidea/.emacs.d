@@ -3,12 +3,12 @@
 # key: blog
 # --
 #+TITLE: ${1:No Title}
-#+AUTHOR: Junjia Ni
-#+EMAIL: creamidea(AT)gmail.com
+${2:$$(yas-choose-value '("#+AUTHOR: 冰糖火箭筒(Junjia Ni)\n#+EMAIL: creamidea(AT)gmail.com" "#+AUTHOR: 蜂蜜甜甜圈(Yi Ou)\n#+EMAIL: 718413182(AT)qq.com"))}
+#+DATE: `(format-time-string "%Y-%m-%d" (current-time))`
 #+CATEGORY: article
-#+DESCRIPTION: ${2:$1}
-#+KEYWORDS: ${3:emacs orgmode}
-#+OPTIONS: H:4 num:t toc:t \n:nil @:t ::t |:t ^:nil f:t TeX:t email:t timestamp:t
+#+DESCRIPTION: ${3:$1}
+#+KEYWORDS: ${4:emacs,orgmode}
+#+OPTIONS: H:4 num:t toc:t \n:nil @:t ::t |:t ^:nil f:t TeX:t email:t <:t date:t timestamp:t
 #+LINK_HOME: https://creamidea.github.io
 #+STARTUP: showall
 

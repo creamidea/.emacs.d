@@ -3,5 +3,4 @@
 # key: <img
 # --
 #+CAPTION: $1
-#+ATTR_HTML :alt $1 :title $1 :align center
-$0
+[[static-img:$1.png]]

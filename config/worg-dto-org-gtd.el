@@ -72,10 +72,10 @@
 ;; show up in my agenda.
 
 (defvar org-gtd-other-files)
-(setf org-gtd-other-files (list
-			   (concat gtd-path "/projects/third-part-monitor.org")
-			   (concat gtd-path "/remember.org")
-			   (concat gtd-path "/reading.org")))
+(setf org-gtd-other-files
+      (list (concat gtd-path "/projects/third-part-monitor.org")
+	    (concat gtd-path "/remember.org")
+	    (concat gtd-path "/reading.org")))
 (setf org-agenda-files (cons org-gtd-file org-gtd-other-files))
 ;; (setq org-agenda-files (list "/Users/creamidea/Documents/GTD/project"))
 
@@ -197,7 +197,7 @@
 (setq org-adapt-indentation nil)
 
 ;; widen category field a little
-(setq org-agenda-prefix-format "  %-17:c%?-12t% s") 
+(setq org-agenda-prefix-format "  %-17:c%?-12t% s")
 
 ;; fix new keybinding that clobbers mine
 (add-hook 'org-mode-hook
