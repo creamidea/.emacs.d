@@ -22,8 +22,8 @@
   (require 'ox-publish)
   (require 'ox-rss)
   (setq org-src-fontify-natively t)
-  (setq creamidea-path "/Users/creamidea/Documents/creamidea")
-  (setq creamidea-public-path "/Users/creamidea/Documents/creamidea")
+  (setq creamidea-path "~/Documents/creamidea")
+  (setq creamidea-public-path "~/Documents/creamidea")
   ;; (setq creamidea-public-path "/Users/creamidea/Code/repos/oe-nk/public") ;; Here will change by your oe-nk's public
   
   ;; (setq meta-linkedin "<meta name=\"linkedin\" content=\"https://cn.linkedin.com/in/junjia-ni-b3a42365\">")

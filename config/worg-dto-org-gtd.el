@@ -34,7 +34,7 @@
 ;;; Code:
 
 (require 'org)
-(setq gtd-path "/Users/creamidea/Documents/GTD")
+(setq gtd-path "~/Documents/GTD")
 
 ;; I have a nice Wacom tablet, so I like to use the mouse. Org-mouse
 ;; adds various clickable menus to org-mode constructs.
@@ -77,7 +77,7 @@
 	    (concat gtd-path "/remember.org")
 	    (concat gtd-path "/reading.org")))
 (setf org-agenda-files (cons org-gtd-file org-gtd-other-files))
-;; (setq org-agenda-files (list "/Users/creamidea/Documents/GTD/project"))
+;; (setq org-agenda-files (list "~/Documents/GTD/project"))
 
 ;; When I'm using org to track issues in a project, I use these
 ;; keywords on a file-local basis: 
