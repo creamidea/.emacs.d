@@ -1,10 +1,12 @@
- (custom-set-variables
+(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(user-full-name "Junjia Ni")
  '(user-mail-address "creamidea@gmail.com")
+ '(inhibit-startup-message t) ;; close the start page(welcome page)
+ '(make-backup-files nil)
  ;; '(custom-safe-themes
  ;;   (quote
  ;;    ("d3a85b814c17775b7dae99ddb20ff153f8a33013271ddd88d37548a32ec97d42" default)))
@@ -20,44 +22,45 @@
  '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
- '(cursor-type 'bar)
+ ;; '(cursor-type '(box . 150))
  '(blink-cursor-mode nil)
  '(blink-cursor-blinks 0)
  '(line-spacing 0.24)
+ '(message-log-max nil)
+ '(electric-pair-mode t);; 括号自动补全
+ '(indent-tabs-mode nil)
  '(transient-mark-mode (quote (only . t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; :font Menlo Monaco
- '(default ((t (:family "Menlo" :foundry "outline" :slant normal :weight Regular :height 144 :size 14 :width normal)))))
-;; Setting Chinese Font
-;; 设置中文字体
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-		    charset
-		    (font-spec :family "PingFang SC" :size 15)))
-;; (font-spec :family "Microsoft Yahei" :size 14)))
+ ;; :font Menlo Monaco Fira-Mono
+ '(default ((t (:family "Menlo" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
 
-;; ============================================================================
-;; (server-start)
+;; ;;;;;;;;;;;;;;;;;;
+;; set some variable;
+;; ;;;;;;;;;;;;;;;;;
+;; set the default directory
+(setq default-directory "~/Code/")
+;; (show-paren-mode 1) ;; 高亮括号匹配
+;; (setq column-number-mode t)
+;; (global-linum-mode t)
+
+;; seth the tab size : TAB
+;; (setq indent-tabs-mode nil)
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 2)
+;; (setq js-indent-level 2)
+;; (setq tab-stop-list ())
+
+;; ;;;;;;;;;;;;;;;;;
+;; (server-start) ;;
+;; ;;;;;;;;;;;;;;;;;
 (load "server")
 (unless (server-running-p) (server-start))
-(when window-system (set-frame-size (selected-frame) 80 24))
-(add-hook 'window-configuration-change-hook
-          (lambda ()
-            (setq frame-title-format
-                  (concat
-                   ;; "creamidea@gmail.com: "
-                   ;; invocation-name "@" system-name ": "
-                   "Au9ustTrek@" system-name
-                   (replace-regexp-in-string
-                    (concat "/home/" user-login-name) "~"
-                    (or buffer-file-name "%b"))))))
-;; (x-focus-frame nil)
 
-;; =============================================
+;; elpa setting
 ;; http://stable.melpa.org/#/getting-started
 ;; (require 'package) ;; You might already have this line
 ;; (add-to-list 'package-archives
@@ -67,76 +70,13 @@
 ;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 ;; (package-initialize) ;; You might already have this line
 
-;; ================================================================================
-;; themes
-
-;; emacs-color-themes
-;; https://github.com/owainlewis/emacs-color-themes
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
-;; (load-theme 'brin t)
-;; (load-theme 'junio t)
-
-;; solarized
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-;; (load-theme 'solarized t)
-;; (custom-set-variables
-;;  '(solarized-termcolors 256)
-;;  '(solarized-contrast 'high)
-;;  '(solarized-visibility 'high)
-;;  '(solarized-degrade t))
-;; (set-frame-parameter nil 'background-mode 'dark)
-;; (set-terminal-parameter nil 'background-mode 'dark)
-;; (enable-theme 'solarized)
-
-;; tomorrow-theme
-(load-file "~/.emacs.d/themes/tomorrow-theme/color-theme-tomorrow.el")
-(require 'color-theme-tomorrow)
-(load-theme 'tomorrow-night t)
-;; (load-theme 'tomorrow-night tomorrow-night-eighties t)
-
-;; ==================================================
-;; dont create make backup file
-(setq make-backup-file nil)
-;; dont create the template file
-(setq-default make-backup-files nil)
-;; close the start page(welcome page)
-(setq inhibit-startup-message t)
-;; set the default directory
-(setq default-directory "~/Code/")
-;; 括号自动补全
-(electric-pair-mode t)
-(show-paren-mode 1)
-;; (setq column-number-mode t)
-;; (global-linum-mode t)
-;; set transparency
-;; (set-frame-parameter (selected-frame) 'alpha '(95 95))
-;; (add-to-list 'default-frame-alist '(alpha 95 95))
-
-;; ===================================================
-;; ibuffer : advance buffer
-(require 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
+;; keymap binding
 ;; 设置M-空格 来setmark了,这样我就不用按 C-@ 来 setmark 了, C-@ 很不好按
 (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 
-;; seth the tab size : TAB
-;; (setq-default indent-tabs-mode nil)
-;; (setq-default tab-width 2)
-(setq js-indent-level 2)
-;; (setq tab-stop-list ())
-
-;; Easy PG
-;; (require 'epa-file)
-;; (epa-file-enable)
-
-;; 改造Alt+;
+;; change Alt+;
 (defun qiang-comment-dwim-line (&optional arg)
-  "Replacement for the comment-dwim command.
-If no region is selected and current line is not blank and we are not at the end of the line,
-then comment current line.
-Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  "Replacement for the comment-dwim command.If no region is selected and current line is not blank and we are not at the end of the line,then comment current line.Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
   (interactive "*P")
   (comment-normalize-vars)
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
@@ -144,38 +84,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
     (comment-dwim arg)))
 (global-set-key "\M-;" 'qiang-comment-dwim-line)
 
-;; custom
-;; ===================================================
-;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/package/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; ===================================================
-;; auto-complete: custome function
-;; (global-auto-complete-mode 1)
-(add-to-list 'load-path "~/.emacs.d/package/popup-el")
-(add-to-list 'load-path "~/.emacs.d/package/auto-complete")
-(require 'popup)
-(require 'auto-complete)
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-;; ((lambda (modes)
-;;    "Bind the modes that gave to the auto-complete-mode"
-;;    (interactive)
-;;    (dolist (mode modes)
-;;      (add-hook mode
-;; 	       (lambda () (auto-complete-mode 1))))
-;;    )(list 'jsx-mode-hook 'js-mode-hook 'lisp-interaction-mode 'cc-mode 'c-mode 'emacs-lisp-mode))
-;; (Add-hook 'js-mode-hook
-;;          (lambda () (auto-complete-mode 1)))
-
-;; ============================================================================
-;; undo-tree
-(add-to-list 'load-path "~/.emacs.d/package/undo-tree-0.6.5")
-(require 'undo-tree)
-(global-undo-tree-mode)
-
+;; load files
+(load-file "~/.emacs.d/config/load-theme.el")
+(load-file "~/.emacs.d/config/load-package.el")
 (load-file "~/.emacs.d/config/org-mode.el")
-(load-file "~/.emacs.d/config/others-mode.el")

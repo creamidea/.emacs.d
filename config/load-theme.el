@@ -1,0 +1,51 @@
+;; ;;;;;;;
+;; themes;
+;; ;;;;;;;
+
+(when window-system (set-frame-size (selected-frame) 80 24))
+(add-hook 'window-configuration-change-hook
+          (lambda ()
+            (setq frame-title-format
+                  (concat
+                   ;; "creamidea@gmail.com: "
+                   ;; invocation-name "@" system-name ": "
+                   "Au9ustTrek@" system-name
+                   (replace-regexp-in-string
+                    (concat "/home/" user-login-name) "~"
+                    (or buffer-file-name "%b"))))))
+;; (x-focus-frame nil)
+
+;; Setting Chinese Font
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+		    charset
+		    (font-spec :family "PingFang SC" :height 160 :size 16)))
+;; (font-spec :family "Microsoft Yahei" :size 14)))
+
+;; set transparency
+;; (set-frame-parameter (selected-frame) 'alpha '(95 95))
+;; (add-to-list 'default-frame-alist '(alpha 95 95))
+
+;; emacs-color-themes
+;; https://github.com/owainlewis/emacs-color-themes
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-themes/themes")
+;; (load-theme 'brin t)
+;; (load-theme 'junio t)
+
+;; solarized
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
+;; (load-theme 'solarized t)
+;; (custom-set-variables
+;;  '(solarized-termcolors 256)
+;;  '(solarized-contrast 'high)
+;;  '(solarized-visibility 'high)
+;;  '(solarized-degrade t))
+;; (set-frame-parameter nil 'background-mode 'dark)
+;; (set-terminal-parameter nil 'background-mode 'dark)
+;; (enable-theme 'solarized)
+
+;; tomorrow-theme
+(load-file "~/.emacs.d/themes/tomorrow-theme/color-theme-tomorrow.el")
+(require 'color-theme-tomorrow)
+(load-theme 'tomorrow-night t)
+;; (load-theme 'tomorrow-night tomorrow-night-eighties t)
