@@ -35,14 +35,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; :font Menlo Monaco Fira-Mono
- '(default ((t (:family "Menlo" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
+ ;; :font Menlo Monaco Fira-Mono Source-Code-Pro
+ '(default ((t (:family "Menlo" :weight Regular :height 160)))))
+ ;; '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
 
 ;; ;;;;;;;;;;;;;;;;;;
 ;; set some variable;
 ;; ;;;;;;;;;;;;;;;;;
 ;; set the default directory
-(setq default-directory "~/Code/")
+;; (setq default-directory "~/Code/")
 ;; (show-paren-mode 1) ;; 高亮括号匹配
 ;; (setq column-number-mode t)
 ;; (global-linum-mode t)
@@ -85,6 +86,6 @@
 (global-set-key "\M-;" 'qiang-comment-dwim-line)
 
 ;; load files
-(load-file "~/.emacs.d/config/load-theme.el")
-(load-file "~/.emacs.d/config/load-package.el")
+(load-file "~/.emacs.d/config/theme.el")
+(load-file "~/.emacs.d/config/package.el")
 (load-file "~/.emacs.d/config/org-mode.el")

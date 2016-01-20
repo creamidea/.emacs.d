@@ -35,3 +35,6 @@
 [submodule "package/dash-at-point"]
 	path = package/dash-at-point
 	url = git@github.com:stanaka/dash-at-point.git
+[submodule "package/markdown-mode"]
+	path = package/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git

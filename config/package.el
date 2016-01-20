@@ -1,3 +1,9 @@
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/package/"))
+(let ((default-directory
+	(concat user-emacs-directory
+		(convert-standard-filename "package/"))))
+  (normal-top-level-add-subdirs-to-load-path))
+
 ;; ibuffer : advance buffer
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -8,14 +14,13 @@
 ;; (epa-file-enable)
 
 ;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/package/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 
 ;; auto-complete: custome function
 ;; (global-auto-complete-mode 1)
-(add-to-list 'load-path "~/.emacs.d/package/popup-el")
-(add-to-list 'load-path "~/.emacs.d/package/auto-complete")
+;; (add-to-list 'load-path "~/.emacs.d/package/popup-el")
+;; (add-to-list 'load-path "~/.emacs.d/package/auto-complete")
 (require 'popup)
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -32,17 +37,14 @@
 ;;          (lambda () (auto-complete-mode 1)))
 
 ;; undo-tree
-(add-to-list 'load-path "~/.emacs.d/package/undo-tree-0.6.5")
 (require 'undo-tree)
 (global-undo-tree-mode)
 
 ;; sws: scss
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/package/scss-mode"))
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 ;; sws: jade
-(add-to-list 'load-path "~/.emacs.d/package/jade-mode")
 (require 'sws-mode)
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
@@ -56,7 +58,7 @@
 
 ;; jsx-mode
 ;; https://truongtx.me/2014/03/10/emacs-setup-jsx-mode-and-jsx-syntax-checking/
-(add-to-list 'load-path "~/.emacs.d/package/jsx-mode/src")
+;; (add-to-list 'load-path "~/.emacs.d/package/jsx-mode/src")
 (require 'jsx-mode)
 (setq jsx-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
@@ -76,8 +78,35 @@
 ;; (powerline-default-theme)
 
 ;; dash mode
-(add-to-list 'load-path "~/.emacs.d/package/dash-at-point")
+;; (add-to-list 'load-path "~/.emacs.d/package/dash-at-point")
 (autoload 'dash-at-point "dash-at-point"
           "Search the word at point with Dash." t nil)
 (global-set-key "\C-cd" 'dash-at-point)
 (global-set-key "\C-ce" 'dash-at-point-with-docset)
+
+;; markdown mode
+;; (add-to-list 'load-path "~/.emacs.d/package/markdown-mode")
+;; (require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+
+;; ;; You can edit user-customizable variables by typing the following command.
+;; ;;     M-x customize-group [RET] jsx-mode
+;; (custom-set-variables
+;;  '(jsx-indent-level 2)
+;;  '(jsx-cmd-options '("--add-search-path" "/path/to/search-path"))
+;;  '(jsx-use-flymake t)
+;;  '(jsx-syntax-check-mode "compile"))
+
+;; (defun jsx-mode-init ()
+;;   (define-key jsx-mode-map (kbd "C-c d") 'jsx-display-popup-err-for-current-line)
+;;   (when (require 'auto-complete nil t)
+;;     (auto-complete-mode t)))
+
+;; (add-hook 'jsx-mode-hook 'jsx-mode-init)
