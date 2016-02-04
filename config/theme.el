@@ -14,13 +14,27 @@
                     (concat "/home/" user-login-name) "~"
                     (or buffer-file-name "%b"))))))
 ;; (x-focus-frame nil)
+;; :font Menlo Monaco Fira-Mono Source-Code-Pro
+;; (let ((my-favourite-font "Fira Mono")
+;;       (my-font-size "16"))
+;;   (add-to-list 'initial-frame-alist `(font . ,(concat my-favourite-font "-" my-font-size)))
+;;   (add-to-list 'default-frame-alist `(font . ,(concat my-favourite-font "-" my-font-size)))
+;;   (set-face-attribute 'default nil :family my-favourite-font :height 160))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ;; :font Menlo Monaco Fira-Mono Source-Code-Pro DejaVu-Sans-Mono
+ '(default ((t (:family "Menlo" :weight Regular :height 160 :width normal)))))
+;; '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
 
 ;; Setting Chinese Font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
-		    charset
-		    (font-spec :family "PingFang SC" :height 156 :size 16)))
-;; (font-spec :family "Microsoft Yahei" :size 14)))
+                    charset
+                    (font-spec :family "PingFang SC" :size 15)))
+;; (font-spec :family "Microsoft Yahei" :size 14 :height 156)))
 
 ;; set transparency
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 95))

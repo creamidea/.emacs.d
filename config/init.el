@@ -22,38 +22,32 @@
  '(smtpmail-smtp-service 587)
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
- ;; '(cursor-type '(box . 150))
+ ;; '(cursor-type 'bar)
  '(blink-cursor-mode nil)
  '(blink-cursor-blinks 0)
- '(line-spacing 0.24)
+ ;; '(line-spacing 0.24)
  '(message-log-max nil)
  '(electric-pair-mode t);; 括号自动补全
  '(indent-tabs-mode nil)
  '(transient-mark-mode (quote (only . t))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;; :font Menlo Monaco Fira-Mono Source-Code-Pro
- '(default ((t (:family "Menlo" :weight Regular :height 160)))))
- ;; '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
 
 ;; ;;;;;;;;;;;;;;;;;;
 ;; set some variable;
 ;; ;;;;;;;;;;;;;;;;;
 ;; set the default directory
 ;; (setq default-directory "~/Code/")
-;; (show-paren-mode 1) ;; 高亮括号匹配
+(show-paren-mode 1) ;; 高亮括号匹配
 ;; (setq column-number-mode t)
 ;; (global-linum-mode t)
 
 ;; seth the tab size : TAB
+;; (setq tab-stop-list ())
 ;; (setq indent-tabs-mode nil)
 ;; (setq-default indent-tabs-mode nil)
 ;; (setq-default tab-width 2)
-;; (setq js-indent-level 2)
-;; (setq tab-stop-list ())
+(setq-default tab-width 2)
+(setq js-indent-level 2)
+(setq python-indent-level 2)
 
 ;; ;;;;;;;;;;;;;;;;;
 ;; (server-start) ;;
