@@ -1,7 +1,7 @@
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/package/"))
 (let ((default-directory
-	(concat user-emacs-directory
-		(convert-standard-filename "package/"))))
+        (concat user-emacs-directory
+                (convert-standard-filename "package/"))))
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; ibuffer : advance buffer
@@ -40,6 +40,34 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; restclient mode
+;; (add-to-list 'load-path "~/.emacs.d/package/restclient-mode")
+;; (require 'restclient)
+;; (setq restclient-same-buffer-response t)
+;; (setq restclient-same-buffer-response-name "*RESTful Response Message*")
+;; (setq restclient-log-request nil)
+;; (setq restclient-inhibit-cookies nil)
+
+;; power-line
+;; (add-to-list 'load-path "~/.emacs.d/package/powerline")
+;; (require 'powerline)
+;; (powerline-default-theme)
+
+;; dash mode
+;; (add-to-list 'load-path "~/.emacs.d/package/dash-at-point")
+;; (autoload 'dash-at-point "dash-at-point"
+;;           "Search the word at point with Dash." t nil)
+;; (global-set-key "\C-cd" 'dash-at-point)
+;; (global-set-key "\C-ce" 'dash-at-point-with-docset)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Programming Language;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python
+(add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
+(add-hook 'python-mode-hook (lambda ()
+                              (guess-style-guess-tab-width)))
+
 ;; sws: scss
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
@@ -63,50 +91,24 @@
 (setq jsx-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
 (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
-
-;; restclient mode
-;; (add-to-list 'load-path "~/.emacs.d/package/restclient-mode")
-;; (require 'restclient)
-;; (setq restclient-same-buffer-response t)
-;; (setq restclient-same-buffer-response-name "*RESTful Response Message*")
-;; (setq restclient-log-request nil)
-;; (setq restclient-inhibit-cookies nil)
-
-;; power-line
-;; (add-to-list 'load-path "~/.emacs.d/package/powerline")
-;; (require 'powerline)
-;; (powerline-default-theme)
-
-;; dash mode
-;; (add-to-list 'load-path "~/.emacs.d/package/dash-at-point")
-;; (autoload 'dash-at-point "dash-at-point"
-;;           "Search the word at point with Dash." t nil)
-;; (global-set-key "\C-cd" 'dash-at-point)
-;; (global-set-key "\C-ce" 'dash-at-point-with-docset)
-
-;; markdown mode
-;; (add-to-list 'load-path "~/.emacs.d/package/markdown-mode")
-;; (require 'markdown-mode)
-(autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
-
-;; ;; You can edit user-customizable variables by typing the following command.
-;; ;;     M-x customize-group [RET] jsx-mode
+;; You can edit user-customizable variables by typing the following command.
+;;     M-x customize-group [RET] jsx-mode
 ;; (custom-set-variables
 ;;  '(jsx-indent-level 2)
 ;;  '(jsx-cmd-options '("--add-search-path" "/path/to/search-path"))
 ;;  '(jsx-use-flymake t)
 ;;  '(jsx-syntax-check-mode "compile"))
-
 ;; (defun jsx-mode-init ()
 ;;   (define-key jsx-mode-map (kbd "C-c d") 'jsx-display-popup-err-for-current-line)
 ;;   (when (require 'auto-complete nil t)
 ;;     (auto-complete-mode t)))
-
 ;; (add-hook 'jsx-mode-hook 'jsx-mode-init)
+
+;; markdown mode
+;; (add-to-list 'load-path "~/.emacs.d/package/markdown-mode")
+;; (require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))

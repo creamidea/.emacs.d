@@ -71,6 +71,7 @@
 	   :html-extension "html"
 	   :section-numbers t
 	   ;; :body-only: t
+     :async-export t
 	   :author "冰糖火箭筒(Junjia Ni)"
 	   :email "creamidea@gmail.com"
 	   :auto-sitemap t                ; Generate sitemap.org automagically...

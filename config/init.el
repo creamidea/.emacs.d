@@ -12,6 +12,7 @@
  ;;    ("d3a85b814c17775b7dae99ddb20ff153f8a33013271ddd88d37548a32ec97d42" default)))
  '(display-battery-mode t)
  '(display-time-mode t)
+ '(display-time-day-and-date nil)
  ;; '(frame-background-mode (quote dark))
  '(linum-format " %6i ")
  '(menu-bar-mode nil)
@@ -47,7 +48,7 @@
 ;; (setq-default tab-width 2)
 (setq-default tab-width 2)
 (setq js-indent-level 2)
-(setq python-indent-level 2)
+;; (setq python-indent-level 2)
 
 ;; ;;;;;;;;;;;;;;;;;
 ;; (server-start) ;;
