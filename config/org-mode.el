@@ -20,7 +20,7 @@
   
   "Config for Creamidea Publish"
   (require 'ox-publish)
-  (require 'ox-rss)
+  ;; (require 'ox-rss)
   (setq org-src-fontify-natively t)
   (setq creamidea-path "~/Documents/creamidea")
   (setq creamidea-public-path "~/Documents/creamidea")
@@ -110,4 +110,5 @@
 (eval-after-load "org"
   (lambda ()
     (load-creamidea-publish)
-    (load-deck)))
+    ;; (load-deck)
+    ))

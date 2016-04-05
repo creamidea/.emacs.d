@@ -26,14 +26,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; :font Menlo Monaco Fira-Mono Source-Code-Pro DejaVu-Sans-Mono
- '(default ((t (:family "DejaVu Sans Mono" :weight Regular :height 156 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :weight Regular :height 130 :width normal)))))
 ;; '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight Regular :height 160 :size 16 :width normal)))))
 
 ;; Setting Chinese Font
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "PingFang SC" :size 15)))
+                    (font-spec :family "PingFang SC" :size 14)))
 ;; (font-spec :family "Microsoft Yahei" :size 14 :height 156)))
 
 ;; set transparency

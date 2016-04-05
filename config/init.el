@@ -52,6 +52,7 @@
 
 ;; ;;;;;;;;;;;;;;;;;
 ;; (server-start) ;;
+;; http://overtone.github.io/emacs-live/doc-starting.html
 ;; ;;;;;;;;;;;;;;;;;
 (load "server")
 (unless (server-running-p) (server-start))

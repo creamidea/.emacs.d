@@ -17,8 +17,9 @@
 下载完emacs并安装，然后打开iTerm2输入以下操作
 #+BEGIN_SRC sh
 $ cd ~/
-$ rm -rf ~/.emacs.d
+$ mv -rf ~/.emacs.d ~/.emacs.d.bak
 $ git clone --depth=1 https://github.com/creamidea/.emacs.d ~/.emacs.d
-$ git submodule update
+$ cd ~/.emacs.d
+$ git submodule update --init
 $ echo "(load-file \"~/.emacs.d/config/init.el\")" > ~/.emacs
 #+END_SRC
