@@ -28,6 +28,7 @@
 ;; font family: Hack, Monaco
 (custom-set-faces
  ;; Monaco; DejaVu Sans Mono;
+
  '(default ((t (:family "Monaco" :weight Regular :height 120 :width normal)))))
 ;;; Setting Chinese Font 中文字体
 ;; Microsoft Yahei
