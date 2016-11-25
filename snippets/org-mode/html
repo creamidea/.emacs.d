@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: insert html
+# key: <h
+# --
+#+BEGIN_HTML
+$0
+#+END_HTML

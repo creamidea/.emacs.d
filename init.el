@@ -158,6 +158,12 @@
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
 
+;; (require 'init-powerline)
+
+(add-hook 'after-init-hook
+          (lambda ()
+            (message "init completed in %.2fms"
+                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
 (when (maybe-require-package 'uptimes)
   (add-hook 'after-init-hook (lambda () (require 'uptimes))))

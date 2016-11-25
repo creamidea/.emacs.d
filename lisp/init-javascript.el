@@ -11,6 +11,21 @@
 
 (defconst preferred-javascript-indent-level 2)
 
+;; (js--prettify-symbols-alise)
+;; http://xahlee.info/comp/unicode_math_operators.html
+;; Attention: your fonts setting will affect the render speed
+;; ("lambda" . 955)
+(defconst my-js--prettify-symbols-alist
+  '(("->" . 8594)                         ; →
+    ("=>" . 8658)                         ; evil 8658
+    (">=" . ?≥)
+    ("<=" . ?≤)
+    ("!=" . 8777)
+    ("!==" . 8800)
+    ("map" . 8614)                                ; ↦
+    ("function" . 402)                         ; 10765
+    ))
+
 ;; Need to first remove from list if present, since elpa adds entries too, which
 ;; may be in an arbitrary order
 (eval-when-compile (require 'cl))
@@ -24,7 +39,10 @@
 
 ;; Change some defaults: customize them to override
 (setq-default js2-basic-offset 2
-              js2-bounce-indent-p nil)
+              js2-strict-missing-semi-warning nil ;; https://github.com/mooz/js2-mode/issues/217
+              js2-missing-semi-one-line-override t
+              js2-bounce-indent-p nil
+              js2-global-externs '("window" "module" "require" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "jQuery" "$"))
 (after-load 'js2-mode
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
@@ -39,14 +57,21 @@
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (dolist (sym my-js--prettify-symbols-alist)
+                (push sym prettify-symbols-alist))))
+
   (after-load 'js2-mode
     (js2-imenu-extras-setup)))
 
 ;; js-mode
 (setq-default js-indent-level preferred-javascript-indent-level)
 
-
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
+
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
 
 
 ;; Javascript nests {} and () a lot, so I find this helpful
@@ -57,7 +82,6 @@
     (define-key js2-mode-map (kbd "M-.") nil)
     (add-hook 'js2-mode-hook
               (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
-
 
 
 ;;; Coffeescript
