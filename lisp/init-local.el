@@ -28,16 +28,18 @@
 ;; font family: Hack, Monaco
 (custom-set-faces
  ;; Monaco; DejaVu Sans Mono;
- '(default ((t (:family "Hack" :weight Regular :height 110 :width normal)))))
-
-;;; Setting Chinese Font
-(if (display-graphic-p)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font
-       (frame-parameter nil 'font)
-       charset
-       ;; (font-spec :family "PingFang SC" :size 14))))
-       (font-spec :family "Microsoft Yahei" :size 15 :height 15))))
+ '(default ((t (:family "Monaco" :weight Regular :height 120 :width normal)))))
+;;; Setting Chinese Font 中文字体
+;; Microsoft Yahei
+;; 15
+(let ((font-family "PingFang SC")
+      (font-size 12))
+  (if (display-graphic-p)
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+        (set-fontset-font
+         (frame-parameter nil 'font)
+         charset
+         (font-spec :family font-family :size font-size :height font-size)))))
 
 ;; themes:
 ;; '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
@@ -123,6 +125,9 @@
                (mapcar
                 (lambda (x) (append myComment (format "\n * %s" x)))
                 (split-string (buffer-string) "\n" t)) " "))))
+
+(add-to-list 'load-path "~/.emacs.d/org-9.0.1/lisp")
+(add-to-list 'load-path "~/.emacs.d/org-9.0.1/contrib/lisp" t)
 
 ;; auto mode alist
 ;; (add-to-list 'auto-mode-alist '("\\.gpg\\'" . text-mode))
@@ -130,7 +135,7 @@
 
 ;; keymap binding
 ;; set M-space to setmark, repalce C-@ with C-space
-(global-set-key (kbd "M-<SPC>") 'set-mark-command)
+;; (global-set-key (kbd "M-<SPC>") 'set-mark-command)
 
 ;; (server-start)
 
