@@ -74,3 +74,4 @@ site-lisp/package/
 /.historian
 /.uptimes.el
 org-*
+/elpa-.*
