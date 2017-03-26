@@ -75,3 +75,4 @@ site-lisp/package/
 /.uptimes.el
 org-*
 /elpa-.*
+srecode-map.el
