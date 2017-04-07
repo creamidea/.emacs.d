@@ -103,7 +103,7 @@ typical word processor."
 
 (setq org-refile-use-cache nil)
 
-                                        ; Targets include this file and any file contributing to the agenda - up to 5 levels deep
+; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets '((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5)))
 
 (after-load 'org-agenda
@@ -132,9 +132,8 @@ typical word processor."
     (org-agenda-refile goto rfloc no-update)))
 
 ;; Targets start with the file name - allows creating level 1 tasks
-;; (setq org-refile-use-outline-path (quote file))
-;; bug?: https://lists.gnu.org/archive/html/emacs-orgmode/2010-07/msg00143.html
-;; (setq org-refile-use-outline-path t)
+;;(setq org-refile-use-outline-path (quote file))
+(setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps nil)
 
 ;; Allow refile to create parent tasks with confirmation
@@ -341,6 +340,7 @@ typical word processor."
 ;;                 (save-excursion
 ;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
 ;;                 (insert (match-string 0))))))
+
 
 (after-load 'org
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)

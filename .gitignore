@@ -1,37 +1,10 @@
-# Compiled
+/url/cache
+/.emacs.desktop
+/auto-save-list
+/.session
+/session.*
+/custom.el
 *.elc
-
-# Packaging
-.cask
-.DS_Store
-
-# my emacs world custom
-*.cache
-server
-elpa
-eshell
-ac-dict
-ac-comphist.dat
-auto-save-list
-ede-projects.el
-.org-id-locations
-bookmarks
-url
-config/*.el~
-session.*
-
-.emacs.desktop
-.emacs.desktop.lock
-.session
-.smex-items
-ido.last
-org-clock-save.el
-projectile-bookmarks.eld
-recentf
-tramp
-history
-custom.el
-
 CVS
 .svn
 *~
@@ -73,6 +46,4 @@ site-lisp/package/
 /anaconda-mode/
 /.historian
 /.uptimes.el
-org-*
-/elpa-.*
-srecode-map.el
+.DS_Store

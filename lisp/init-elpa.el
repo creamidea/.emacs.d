@@ -37,26 +37,9 @@
 ;; http://orgmode.org/elpa/
 (add-to-list 'package-archives '("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"))
 
-;; (when (< emacs-major-version 24)
-;;   ;; http://elpa.gnu.org/packages/
-;;   (add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
-(add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-
-
-(defconst sanityinc/no-ssl (or (< emacs-major-version 24)
-                               (and (memq system-type '(windows-nt ms-dos))
-                                    (not (gnutls-available-p)))))
-
-
-(defconst sanityinc/no-ssl (or (< emacs-major-version 24)
-                               (and (memq system-type '(windows-nt ms-dos))
-                                    (not (gnutls-available-p)))))
-
-
-(defconst sanityinc/no-ssl (or (< emacs-major-version 24)
-                               (and (memq system-type '(windows-nt ms-dos))
-                                    (not (gnutls-available-p)))))
-
+(when (< emacs-major-version 24)
+  ;; http://elpa.gnu.org/packages/
+  (add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
 (defconst sanityinc/no-ssl (or (< emacs-major-version 24)
                                (and (memq system-type '(windows-nt ms-dos))

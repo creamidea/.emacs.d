@@ -72,6 +72,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.es6\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
 
 ;; Javascript nests {} and () a lot, so I find this helpful
@@ -82,6 +83,7 @@
     (define-key js2-mode-map (kbd "M-.") nil)
     (add-hook 'js2-mode-hook
               (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
+
 
 
 ;;; Coffeescript
