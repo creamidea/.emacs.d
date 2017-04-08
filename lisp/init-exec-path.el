@@ -4,7 +4,8 @@
   (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE"))
     (add-to-list 'exec-path-from-shell-variables var)))
 
-(when window-system
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Window-Systems.html
+(when (memq window-system '(w32 pc))
   "set path and exec-path."
   (let ((mypaths '("C:/Program Files/Git/bin/"
                    "C:/Program Files/Git/cmd/"
