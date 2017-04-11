@@ -1,15 +1,4 @@
-;;; Find and load the correct package.el
-
-;; When switching between Emacs 23 and 24, we always use the bundled package.el in Emacs 24
-(let ((package-el-site-lisp-dir
-       (expand-file-name "site-lisp/package" user-emacs-directory)))
-  (when (and (file-directory-p package-el-site-lisp-dir)
-             (> emacs-major-version 23))
-    (message "Removing local package.el from load-path to avoid shadowing bundled version")
-    (setq load-path (remove package-el-site-lisp-dir load-path))))
-
 (require 'package)
-
 
 
 ;;; Install into separate package dirs for each Emacs version, to prevent bytecode incompatibility
@@ -27,23 +16,13 @@
 
 ;;; Standard package repositories
 
-(when (< emacs-major-version 24)
-  ;; Mainly for ruby-mode
-  ;; http://marmalade-repo.org/packages/
-  (add-to-list 'package-archives '("marmalade" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")))
-
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
 ;; http://orgmode.org/elpa/
 (add-to-list 'package-archives '("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"))
 
-(when (< emacs-major-version 24)
-  ;; http://elpa.gnu.org/packages/
-  (add-to-list 'package-archives '("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
-
-(defconst sanityinc/no-ssl (or (< emacs-major-version 24)
-                               (and (memq system-type '(windows-nt ms-dos))
-                                    (not (gnutls-available-p)))))
+(defconst sanityinc/no-ssl (and (memq system-type '(windows-nt ms-dos))
+                                (not (gnutls-available-p))))
 
 ;;; Also use Melpa for most packages
 (add-to-list 'package-archives
